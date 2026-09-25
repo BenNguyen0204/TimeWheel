@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button id="theme-toggle">Toggle Theme</button>
+    <div class="hero">
+        <p class="prompt">> day-clock</p>
+        <h1>Color your day, <br> hour by hour.</h1>
+        <p class="subtitle">Add time blocks and watch the clock face fill in.</p>
+
+        <div class="panel">
+            <div class="layout">
+                <div class="clock-col">
+                    <div class="clock" id="clock">
+                        <div class="hand" id="hand">
+                        </div>
+                        <div class="hub">
+                        </div>
+                    </div>
+                    <div class="now-label" id="now-label">current time: --:-- </div>
+                </div>
+
+                <div class="form-col">
+                    <p class="section-label">Add a time block</p>
+                    <form id="form">
+                        <div class="row">
+                            <div class="field">
+                                <label for="start">Start</label>
+                                <input type="text" id="start" inputmode="numeric" placeholder="HH:MM"
+                                    pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" maxlength="5" required>
+                            </div>
+                            <div class="field">
+                                <label for="end">End</label>
+                                <input type="text" id="end" inputmode="numeric" placeholder="HH:MM"
+                                    pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" maxlength="5" required>
+                            </div>
+                        </div>
+
+                        <p class="hint">24-hour clock only — type as HH:MM, e.g. 14:30.</p>
+                        <div class="field">
+                            <label for="label">Label</label>
+                            <input type="text" id="label" placeholder="e.g. Class" required maxlength="40">
+                        </div>
+
+                        <div class="field">
+                            <label>Color</label>
+                            <div class="swatches" id="swatches">
+                                <button type="button" class="swatch-btn selected" data-color="#f4a94b"
+                                    style="background:#f4a94b"></button>
+                                <button type="button" class="swatch-btn" data-color="#e0793f"
+                                    style="background:#e0793f"></button>
+                                <button type="button" class="swatch-btn" data-color="#e2637c"
+                                    style="background:#e2637c"></button>
+                                <button type="button" class="swatch-btn" data-color="#d162c4"
+                                    style="background:#d162c4"></button>
+                                <button type="button" class="swatch-btn" data-color="#a389e0"
+                                    style="background:#a389e0"></button>
+                                <button type="button" class="swatch-btn" data-color="#7b8be0"
+                                    style="background:#7b8be0"></button>
+                                <button type="button" class="swatch-btn" data-color="#5b8def"
+                                    style="background:#5b8def"></button>
+                                <button type="button" class="swatch-btn" data-color="#4bc0c8"
+                                    style="background:#4bc0c8"></button>
+                                <button type="button" class="swatch-btn" data-color="#4caf7d"
+                                    style="background:#4caf7d"></button>
+                                <button type="button" class="swatch-btn" data-color="#7bc142"
+                                    style="background:#7bc142"></button>
+                                <button type="button" class="swatch-btn" data-color="#e0c341"
+                                    style="background:#e0c341"></button>
+                                <button type="button" class="swatch-btn" data-color="#c9974b"
+                                    style="background:#c9974b"></button>
+                                <button type="button" class="swatch-btn" data-color="#c65b5b"
+                                    style="background:#c65b5b"></button>
+                                <button type="button" class="swatch-btn" data-color="#6bbf9c"
+                                    style="background:#6bbf9c"></button>
+                                <button type="button" class="swatch-btn" data-color="#8a94a6"
+                                    style="background:#8a94a6"></button>
+                                <button type="button" class="swatch-btn" data-color="#5c6b7a"
+                                    style="background:#5c6b7a"></button>
+                            </div>
+                        </div>
+                        <button type="submit" class="accent-btn">Add to clock</button>
+                    </form>
+
+                    <div>
+                        <p class="section-label"> > Time blocks</p>
+                        <ul class="blocks" id="blocks"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+</body>
+
+</html>
