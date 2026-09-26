@@ -51,6 +51,7 @@
     const labelInput = document.getElementById("label");
     const blocksList = document.getElementById("blocks");
     const clock = document.getElementById("clock");
+    const ticksContainer = document.getElementById("ticks");
     const hand = document.getElementById("hand");
     const nowLabel = document.getElementById("now-label");
 
@@ -204,6 +205,38 @@
         });
     }
 
+    // Draws a fixed ring of hour marks (major marks + labels every 3 hours,
+    // minor marks every hour in between) so the hand's position is readable.
+    function renderTicks() {
+        for (var h = 0; h < 24; h++) {
+            var angle = (h / 24) * 360;
+            var isMajor = h % 3 === 0;
+
+            var tick = document.createElement("div");
+            tick.className = "tick";
+            tick.style.transform = "rotate(" + angle + "deg)";
+
+            var mark = document.createElement("span");
+            mark.className = "tick-mark" + (isMajor ? " major" : "");
+            tick.appendChild(mark);
+
+            if (isMajor) {
+                var labelWrap = document.createElement("span");
+                labelWrap.className = "tick-label-wrap";
+                labelWrap.style.transform = "rotate(" + (-angle) + "deg)";
+
+                var label = document.createElement("span");
+                label.className = "tick-label";
+                label.textContent = (h < 10 ? "0" : "") + h;
+
+                labelWrap.appendChild(label);
+                tick.appendChild(labelWrap);
+            }
+
+            ticksContainer.appendChild(tick);
+        }
+    }
+
     // Moves the hour hand and updates the current-time label. The hand's
     // resting rotate(0deg) points straight down (6 o'clock), so midnight
     // (top of the dial) needs an extra 180deg offset.
@@ -218,6 +251,7 @@
     setupColorPicker();
     loadTheme();
 
+    renderTicks();
     loadBlocks();
     renderBlocksList();
     renderClockFace();
