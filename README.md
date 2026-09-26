@@ -6,6 +6,7 @@ A 24-hour clock that colors itself in based on your daily schedule.
 
 - Add a time block (start, end, label, color)
 - The clock face fills in that section with your chosen color
+- Hour marks around the dial (every 3 hours, with minor ticks in between) show you where each time falls
 - The hour hand shows the current time and moves on its own
 - Everything is saved in your browser, so it's still there next time you open the page
 
